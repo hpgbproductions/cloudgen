@@ -16,6 +16,8 @@
 
 It is a good idea to start with the default settings. The values and Linear Maps work for any cloud type. From the type of cloud cover you want to recreate, choose a suitable range of cloud types, and work on the Linear Maps from there. In the default cloud profile, 0 means no clouds, 0.5 means overcast with some head clouds, and 1 generates the most head clouds.
 
+Also try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings are the same.
+
 ## List of Settings
 
 Reference for all available cloud profile settings.
