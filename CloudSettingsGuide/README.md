@@ -1,5 +1,21 @@
 # Summer-Clouds Reference
 
+## Introduction of Cloud Generation
+
+### Boundary calculations with fixed Cloud Type
+
+#### Base Clouds
+
+#### Head Clouds
+
+### Boundary calculations with varying Cloud Type
+
+### Particles
+
+### Settings Tips
+
+It is a good idea to start with the default settings. The values and Linear Maps work for any cloud type. From the type of cloud cover you want to recreate, choose a suitable range of cloud types, and work on the Linear Maps from there. In the default cloud profile, 0 means no clouds, 0.5 means overcast with some head clouds, and 1 generates the most head clouds.
+
 ## List of Settings
 
 Reference for all available cloud profile settings.
@@ -78,7 +94,7 @@ Notes:
 
 Name | Input "t" | Description
 :--- | :--- | :---
-CloudTypeMap | Cloud Type Perlin Noise | Defines a simulated weather intensity. Usually, 0 means no clouds, 0.5 means overcast with some head clouds, and 1 generates the most head clouds.
+CloudTypeMap | Cloud Type Perlin Noise | Defines a simulated weather intensity.
 BaseHeightMap | CloudTypeMap | Scales the maximum height of the base clouds.
 BaseSinkFactorMap | CloudTypeMap | Lowers the base clouds by a coefficient of the base scale. If the cloud pattern is lower than this value at any given point, base clouds will be below the start altitude and will not appear. Increase this value if straight vertical edges are appearing on head clouds.
 HeadHeightMap | CloudTypeMap | Scales the height of the divider from the start altitude.
