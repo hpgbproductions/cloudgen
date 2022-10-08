@@ -1,0 +1,121 @@
+; Scattered small clouds at a random medium altitude
+; Base clouds are disabled, so the only clouds that appear are head clouds
+
+[CloudGenerator]
+Version=1
+
+[CloudGeneratorSettings]
+; (Integer) Number of cloud particles to generate
+MinParticles=99900
+MaxParticles=99999
+
+; Each unit in world coordinates corresponds to this distance in Perlin Noise
+NoiseScale=0.0001
+CloudTypeNoiseScale=0.0001
+
+; (Integer|String) Set the weather of the in-game skybox
+OverrideWeather = 0
+
+; Altitude at which the lowest clouds are formed
+StartAltitude=1500
+
+; Distance between each particle of the lower clouds
+IntervalX=800
+IntervalY=800
+IntervalZ=800
+
+; (Integer 1..1000) Max number of chunks
+MaxChunks=1000
+
+; Length of a square in the grid used to set the order of cloud generation
+ChunkSize=16000
+
+; (Integer) Number of Perlin Noise layers
+Octaves=4
+
+; Amplitude of one Perlin Noise layer compared to the last
+Persistence=0.5
+
+; Frequency of one Perlin Noise layer compared to the last
+Lacunarity=2
+
+; (true|false) Particle renderer settings
+CastShadows=false
+ReceiveShadows=false
+
+; Particle fading
+MaxParticleSizeOnScreen=5
+SoftParticlesFarFade=1
+SoftParticlesNearFade=0
+CameraFarFade=1
+CameraNearFade=0
+
+[BaseClouds]
+; Maximum height
+Scale=4000
+
+MinParticleSize=2000
+MaxParticleSize=6000
+RandomOffsetX=150
+RandomOffsetY=150
+RandomOffsetZ=150
+
+[HeadClouds]
+; Maximum height between the middle point of head clouds and the bottom of base clouds
+Scale=5000
+
+; Relative steepness of clouds
+UpperHalfScale=2
+LowerHalfScale=0.5
+
+; (Integer) Multiplies the sampling interval for head clouds
+IntervalCount=1
+
+MinParticleSize=1000
+MaxParticleSize=5000
+RandomOffsetX=500
+RandomOffsetY=500
+RandomOffsetZ=500
+
+; The Linear Map type provides functions for mapping values from the range t0..t1 to the range x0..x1
+[CloudTypeMap]
+t0=0
+t1=1
+x0=0
+x1=1
+
+[BaseHeightMap]
+t0=0
+t1=0.5
+x0=0
+x1=0
+
+[BaseSinkFactorMap]
+t0=0
+t1=0.7
+x0=1
+x1=1
+
+[HeadHeightMap]
+t0=0.3
+t1=0.7
+x0=1
+x1=1.5
+
+[HeadSinkFactorMap]
+t0=0
+t1=1
+x0=0.55
+x1=0.55
+
+[HeadLowerFactorMap]
+t0=0
+t1=1
+x0=0
+x1=1
+
+[HeadGenerateThresholdMap]
+t0=0
+t1=1
+x0=0
+x1=0

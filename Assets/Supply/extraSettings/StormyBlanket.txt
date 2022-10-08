@@ -1,0 +1,119 @@
+; Stormy, low clouds
+; A different start weather is applied.
+
+[CloudGenerator]
+Version=1
+
+[CloudGeneratorSettings]
+; (Integer) Number of cloud particles to generate
+MinParticles=49900
+MaxParticles=50000
+
+; Each unit in world coordinates corresponds to this distance in Perlin Noise
+NoiseScale=0.00005
+CloudTypeNoiseScale=0.000001
+
+; (Integer|String) Set the weather of the in-game skybox
+OverrideWeather=4
+
+; Altitude at which the lowest clouds are formed
+StartAltitude=1500
+
+; Distance between each particle of the lower clouds
+IntervalX=800
+IntervalY=800
+IntervalZ=800
+
+; (Integer) Max number of chunks
+MaxChunks = 1000
+
+; Length of a square in the grid used to set the order of cloud generation
+ChunkSize = 10000
+
+; (Integer) Number of Perlin Noise layers
+Octaves=4
+
+; Amplitude of one Perlin Noise layer compared to the last
+Persistence=0.7
+
+; Frequency of one Perlin Noise layer compared to the last
+Lacunarity=2
+
+; (true|false) Particle settings
+CastShadows=false
+ReceiveShadows=false
+
+; Particle fading
+MaxParticleSizeOnScreen=5
+CameraFarFade=1
+CameraNearFade=0
+
+[BaseClouds]
+; Maximum height
+Scale=2000
+
+MinParticleSize=1500
+MaxParticleSize=4000
+RandomOffsetX=300
+RandomOffsetY=300
+RandomOffsetZ=300
+
+[HeadClouds]
+; Maximum height between the middle point of head clouds and the bottom of base clouds
+Scale=3000
+
+; Relative steepness of clouds
+UpperHalfScale=3
+LowerHalfScale=5
+
+; (Integer) Multiplies the sampling interval for head clouds
+IntervalCount=1
+
+MinParticleSize=2000
+MaxParticleSize=6000
+RandomOffsetX=600
+RandomOffsetY=600
+RandomOffsetZ=600
+
+; The Linear Map type provides functions for mapping values from the range t0..t1 to the range x0..x1
+[CloudTypeMap]
+t0=0
+t1=1
+x0=0.7
+x1=1
+
+[BaseHeightMap]
+t0=0
+t1=0.5
+x0=3
+x1=1
+
+[BaseSinkFactorMap]
+t0=0.7
+t1=1
+x0=0.2
+x1=0.1
+
+[HeadHeightMap]
+t0=0.7
+t1=1
+x0=1
+x1=1
+
+[HeadSinkFactorMap]
+t0=0.7
+t1=1
+x0=0.5
+x1=0.5
+
+[HeadLowerFactorMap]
+t0=0.7
+t1=1
+x0=0.7
+x1=0.5
+
+[HeadGenerateThresholdMap]
+t0=0.7
+t1=1
+x0=0.4
+x1=0.2

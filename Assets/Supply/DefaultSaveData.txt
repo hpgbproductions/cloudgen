@@ -1,0 +1,5 @@
+[CloudGenerator]
+Version=1
+
+[SaveData]
+LastRun=DEFAULT.INI

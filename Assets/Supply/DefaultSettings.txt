@@ -1,0 +1,127 @@
+; The following default cloud generator settings are a great starting point for creating your own.
+
+; It generates cloud formations of random intensity on level load.
+; You can get anything from scattered to storm clouds.
+
+[CloudGenerator]
+Version=1
+
+[CloudGeneratorSettings]
+; (Integer) Number of cloud particles to generate
+MinParticles=49900
+MaxParticles=50000
+
+; Each unit in world coordinates corresponds to this distance in Perlin Noise
+NoiseScale=0.0001
+CloudTypeNoiseScale=0.000001
+
+; (String|Integer 0..7) The weather to apply to the game when the clouds are generated
+OverrideWeather=0
+
+; Altitude at which the lowest clouds are formed
+StartAltitude=1500
+
+; Distance between each particle of the lower clouds
+IntervalX=400
+IntervalY=400
+IntervalZ=400
+
+; (Integer 1..1000) Max number of chunks
+MaxChunks=200
+
+; Length of a square in the grid used to set the order of cloud generation
+ChunkSize=4000
+
+; (Integer) Number of Perlin Noise layers
+Octaves=4
+
+; Amplitude of one Perlin Noise layer compared to the last
+Persistence=0.5
+
+; Frequency of one Perlin Noise layer compared to the last
+Lacunarity=2
+
+; (true|false) Particle renderer settings
+CastShadows=false
+ReceiveShadows=false
+
+; Particle fading
+MaxParticleSizeOnScreen=5
+CameraFarFade=100
+CameraNearFade=0
+
+[BaseClouds]
+; Maximum height
+Scale=4000
+
+MinParticleSize=1000
+MaxParticleSize=3000
+RandomOffsetX=150
+RandomOffsetY=150
+RandomOffsetZ=150
+
+[HeadClouds]
+; Maximum height between the middle point of head clouds and the bottom of base clouds
+Scale=7000
+
+; Relative steepness of clouds
+UpperHalfScale=2
+LowerHalfScale=5
+
+; (Integer) Multiplies the sampling interval for head clouds
+IntervalCount=2
+
+MinParticleSize=2000
+MaxParticleSize=6000
+RandomOffsetX=300
+RandomOffsetY=300
+RandomOffsetZ=300
+
+; The Linear Map type provides functions for mapping values from the range t0..t1 to the range x0..x1
+[CloudTypeMap]
+t0=0
+t1=1
+x0=0
+x1=1
+
+; The maximum height of base clouds is multiplied by this value
+[BaseHeightMap]
+t0=0
+t1=0.5
+x0=3
+x1=1
+
+; Lower the base clouds by a proportion of the maximum height, discarding those below the start altitude
+[BaseSinkFactorMap]
+t0=0
+t1=0.7
+x0=0.9
+x1=0.2
+
+; The height of the middle line of head clouds as a proportion of the head scale
+[HeadHeightMap]
+t0=0.3
+t1=0.7
+x0=0.5
+x1=1
+
+; Moves the upper and lower halves of head clouds together, discarding those that cross the middle line
+[HeadSinkFactorMap]
+t0=0
+t1=1
+x0=0.7
+x1=0.2
+
+; Moves the upper and lower halves of head clouds down by a proportion of the head scale
+[HeadLowerFactorMap]
+t0=0
+t1=1
+x0=0.5
+x1=0.1
+
+; Only create head clouds if the base cloud pattern is greater than this value
+[HeadGenerateThresholdMap]
+t0=0
+t1=1
+x0=1
+x1=0.2
