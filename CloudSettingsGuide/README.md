@@ -23,7 +23,7 @@ StartAltitude | float | The lowest altitude that clouds can generate. Note that 
 IntervalX | float | Distance between sample points along the X-axis.
 IntervalY | float | The mean height between particles in a columnn.
 IntervalZ | float | Distance between sample points along the Z-axis.
-MaxChunks | int | The maximum number of sample point chunks. The chunks start at the aircraft's position and spiral outwards. Greater values allow a larger area to be covered by clouds, but can lead to longer cloud generation times.
+MaxChunks | int 1..1000 | The maximum number of sample point chunks. The chunks start at the aircraft's position and spiral outwards. Greater values allow a larger area to be covered by clouds, but can lead to longer cloud generation times.
 ChunkSize | float | Length of a square that clouds are generated in. Greater values allow a larger area to be covered by clouds, but can lead to longer cloud generation times.
 Octaves | int | Number of Perlin Noise layers. Greater values create more natural-looking clouds by reducing uniformity, but increase cloud generation times.
 Persistence | float | Amplitude of one Perlin Noise layer compared to the last.
