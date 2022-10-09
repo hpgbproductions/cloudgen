@@ -4,6 +4,8 @@
 
 ### Boundary calculations with fixed Cloud Type
 
+One Perlin Noise set controls the shape of the clouds. This is referred to as the Pattern Noise.
+
 #### Base Clouds
 
 #### Head Clouds
