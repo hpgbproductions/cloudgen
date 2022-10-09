@@ -2,23 +2,89 @@
 
 ## Introduction of Cloud Generation
 
+This section discusses how the cloud generator works, as well as some of its main settings. The principle comes from calculating cloud boundaries and filling them with particles.
+
+### Linear Maps
+
+A Linear Map accepts a value of `t`, and performs a linear conversion from the range `t0..t1` to the range `x0..x1`. This is such that:
+
+- When `t` is `t0`, the output value `x` is `x0`.
+- When `t` is `t1`, `x` is `x1`.
+- If `t` is in the middle of `t0` and `t1`, `x` will be equally as far from the values `x0` and `x1`.
+- The output value `x` is always clamped between `x0` and `x1`.
+
+The implementation is equal to the Funky Trees:
+`lerp(x0, x1, inverselerp(t0, t1, t))`
+
 ### Boundary calculations with fixed Cloud Type
 
-One Perlin Noise set controls the shape of the clouds. This is referred to as the Pattern Noise.
+Assume that the Cloud Type is constant through the entire cloud generation area.
+
+When the Cloud Type is fixed, the only variation in cloud generation comes from one Perlin Noise set. This is referred to as the Pattern Noise and directly controls the shape of the clouds. The Pattern Noise has a range of 0 to 1, inclusive. A variety of settings modify the generation of the clouds.
 
 #### Base Clouds
 
+The cloud generator uses the Pattern Noise to determine the maximum height of the base clouds. The minimum height of the base clouds is equal to the start altitude.
+
+![img1](../CloudSettingsGuide/graph/Slide1.PNG?raw=true)
+
+The cloud sinking coefficient lowers the clouds by a height relative to the base height. Alternatively, it can be said that the sinking coefficient causes the line to shift to the right.
+
+When the cloud pattern is lower than the cloud sinking coefficient, the maximum height is lower than the minimum height. No clouds will be produced.
+
+![img2](../CloudSettingsGuide/graph/Slide2.PNG?raw=true)
+
+Setting the cloud sinking coefficient is the main way to control the coverage of base clouds.
+
 #### Head Clouds
+
+Head clouds consist of upper and lower halves which meet at the dividing altitude. The dividing altitude is controlled using the cloud type, so when the cloud type is constant, the dividing altitude is the same for all the clouds.
+
+The difference between the start altitude and dividing altitude is the head height.
+
+![img3](../CloudSettingsGuide/graph/Slide3.PNG?raw=true)
+
+The Pattern Noise can now be applied to set the shape of the clouds. The clouds generate from the dividing altitude, instead of the start altitude.
+
+Separate scale values are provided for the upper and lower halves of the clouds. The head height is used to set the maximum height, and the steepness, of each half when the scale is 1.
+
+Head clouds will not generate below the start altitude.
+
+![img4](../CloudSettingsGuide/graph/Slide4.PNG?raw=true)
+
+The sinking function for the head clouds works the same as the base clouds. The upper and lower halves are pulled towards the dividing line.
+
+![img5](../CloudSettingsGuide/graph/Slide5.PNG?raw=true)
+
+The lowering coefficient is then applied, which lowers both the upper and lower halves of the head clouds by a proportion of the head height.
+
+![img6](../CloudSettingsGuide/graph/Slide6.PNG?raw=true)
+
+Finally, a generation threshold can be added. When the Pattern Noise is less than the threshold value, no particles will be generated. It is possible to create vertical walls of clouds with this setting.
+
+![img7](../CloudSettingsGuide/graph/Slide7.PNG?raw=true)
 
 ### Boundary calculations with varying Cloud Type
 
+A second set of Perlin Noise can be used to control the Cloud Type. This is known as the Type Noise. The Type Noise is the input value of the CloudTypeMap Linear Map section.
+
+The mapped value is passed to the other Linear Maps to modify cloud generation.
+
 ### Particles
+
+Particle generation starts with Cloud Chunks. They are grid squares that are used to help center clouds around the player's aircraft. A pre-computed set of 1000 grid coordinates are used, starting with (0, 0) and spiral outwards.
+
+Each chunk has a number of sample points which are evenly spaced apart. Each sample point has a unique X and Z coordinate. Sample points in a chunk start from (0, 0) at one corner and end at the opposite corner. The boundaries of base and head clouds are calculated for each sample point, taking into consideration the cloud type at the location as well. A column of particles can be produced at the sample point.
+
+To reduce the appearance of uniformity, each particle has a random size and can be offset by random distances along each axis.
+
+It is important that the length of a chunk is a multiple of the sample point interval. If the head interval multiplier, the number of base cloud particles produced every head cloud particle in each direction, is more than 1, the length of the chunk must be a multiple of this head sampling interval. This is to ensure that lines will not be visible between chunk boundaries.
 
 ### Settings Tips
 
 It is a good idea to start with the default settings. The values and Linear Maps work for any cloud type. From the type of cloud cover you want to recreate, choose a suitable range of cloud types, and work on the Linear Maps from there. In the default cloud profile, 0 means no clouds, 0.5 means overcast with some head clouds, and 1 generates the most head clouds.
 
-Also try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings are the same.
+Also try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings were retained.
 
 ## List of Settings
 
