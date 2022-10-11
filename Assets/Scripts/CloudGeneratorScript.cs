@@ -197,6 +197,11 @@ public class CloudGeneratorScript : MonoBehaviour
         Generate();
     }
 
+    private void OnDestroy()
+    {
+        ServiceProvider.Instance.DevConsole.UnregisterCommand("RegenerateClouds");
+    }
+
     private void Generate()
     {
         System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
