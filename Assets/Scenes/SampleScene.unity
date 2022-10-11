@@ -290,6 +290,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c04479b5deb08474aac2e0a3abded24c, type: 3}
   - {fileID: 4900000, guid: 49d79dd9516b8ca4d812b37056f212f9, type: 3}
   - {fileID: 4900000, guid: 80864501852b58c4ebdaee089096dc2f, type: 3}
+  - {fileID: 4900000, guid: e71c277484d9e4245809c67fb06b49d5, type: 3}
   OtherSettingsNames:
   - CottonCandy.ini
   - Fix25.ini
@@ -303,6 +304,7 @@ MonoBehaviour:
   - Stormy.ini
   - StormyBlanket.ini
   - VariedLow.ini
+  - LargeShrooms2.ini
   DefaultSaveData: {fileID: 4900000, guid: 6155fcbf2c837284787d569ed419c50a, type: 3}
   DefaultSaveDataName: CLOUDGEN.INI
 --- !u!1 &2070811031
