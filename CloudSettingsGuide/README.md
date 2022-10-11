@@ -86,6 +86,14 @@ It is a good idea to start with the default settings. The values and Linear Maps
 
 Also try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings were retained.
 
+#### Optimization
+
+Having more particles looks better but is one of the largest contributors to lag. I recommend 50,000 particles for dense, tall clouds, and up to 100,000 particles for scattered clouds.
+
+You should also have larger particle intervals for larger cloud formations, as more particles will be near the aircraft. Faraway particles consume much fewer resources.
+
+After generating clouds, a message stating the number of particles spawned will appear. Click on it to see the number of chunks (proportion of spawnable area) used. If you are hitting the chunk cap instead of the particle cap, try to increase the number of chunks or the size of the chunks to increase the spawnable area.
+
 ## List of Settings
 
 Reference for all available cloud profile settings.
