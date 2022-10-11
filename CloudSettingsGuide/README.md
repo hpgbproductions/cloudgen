@@ -174,8 +174,8 @@ Name | Input "t" | Description
 :--- | :--- | :---
 CloudTypeMap | Cloud Type Perlin Noise | Defines a simulated weather intensity.
 BaseHeightMap | CloudTypeMap | Scales the maximum height of the base clouds.
-BaseSinkFactorMap | CloudTypeMap | Lowers the base clouds by a coefficient of the base scale. If the cloud pattern is lower than this value at any given point, base clouds will be below the start altitude and will not appear. Increase this value if straight vertical edges are appearing on head clouds.
+BaseSinkFactorMap | CloudTypeMap | Lowers the base clouds by a coefficient of the base scale. If the cloud pattern is lower than this value at any given point, base clouds will be below the start altitude and will not appear.
 HeadHeightMap | CloudTypeMap | Scales the height of the divider from the start altitude.
 HeadSinkFactorMap | CloudTypeMap | Moves the upper and lower halves of the head clouds towards the dividing line. If the cloud pattern is lower than this value, head clouds will not appear.
 HeadLowerFactorMap | CloudTypeMap | Lowers the head clouds by a multiple of the head scale. Increase the x-values if the head and base clouds are not connected.
-HeadGenerateThresholdMap | CloudTypeMap | Only generate head clouds if the cloud pattern is greater than this value.
+HeadGenerateThresholdMap | CloudTypeMap | Only generate head clouds if the cloud pattern is greater than this value. It can cause vertical edges to appear on the sides of head clouds.
