@@ -84,7 +84,9 @@ It is important that the length of a chunk is a multiple of the sample point int
 
 It is a good idea to start with the default settings. The values and Linear Maps work for any cloud type. From the type of cloud cover you want to recreate, choose a suitable range of cloud types, and work on the Linear Maps from there. In the default cloud profile, 0 means no clouds, 0.5 means overcast with some head clouds, and 1 generates the most head clouds.
 
-Also try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings were retained.
+Also remember to fly your aircraft around the clouds, and regenerate clouds a few times, to find settings that work consistently.
+
+Lastly, try out the prototype version of the cloud generator in Processing [here](https://github.com/hpgbproductions/_dump2/blob/main/CLOUDGEN/CLOUDGEN.pde). While there are some differences, many key settings were retained.
 
 #### Optimization
 
@@ -93,6 +95,10 @@ Having more particles looks better but is one of the largest contributors to lag
 You should also have larger particle intervals for larger cloud formations, as more particles will be near the aircraft. Faraway particles consume much fewer resources.
 
 After generating clouds, a message stating the number of particles spawned will appear. Click on it to see the number of chunks (proportion of spawnable area) used. If you are hitting the chunk cap instead of the particle cap, try to increase the number of chunks or the size of the chunks to increase the spawnable area.
+
+#### Screenshot Tips
+
+Found a nice cloud formation but can't line up your shot? The cloud particle system uses local coordinate simulation, so try applying transformations to the transform of the particle system when taking screenshots.
 
 ## List of Settings
 
